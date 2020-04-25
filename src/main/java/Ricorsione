@@ -1,0 +1,37 @@
+1) Provo per tutte le parole se sono o meno contenute nella griglia, e scopro quali
+	siano effettivamente contenute: applico processo ricorsivo in modo iterativo per
+	tutte le parole del dizionario
+2)  Provare tutti i possibili percorsi sulla griglia di Ruzzle, per ogni lettera: esiste
+	una parola D? Che iniziano per D? Per DQ? Per DL? E continuo.
+
+// ESPLORIAMO IL PRIMO APPROCCIO
+Problema:
+ - INPUT: Stringa da riconoscere 'parola'
+ 		  	Andare a cercare la prima lettera fuori dal processo ricorsivo: posizione della
+ 		  	lettera iniziale
+ 		  Contenuto della Board: matrice
+ 		  
+ - SOLUZIONE PARZIALE: 
+ 			parte iniziale della parola, già riconosciuta
+ 			elenco delle posizioni già riconosciute: anche per vincolo di Ruzzle
+ - SOLUZIONE TOTALE:
+ 			la parola completamente riconosciuta
+ 			elenco di posizioni che servono per comporre la parola completa
+ - LIVELLO: il numero di caratteri già riconosciuti, ad ogni livello aggiungo un carattere,
+ 			se rispetta determinate regole, esso viene inserito e rispecchia il livello di 
+ 			ricorsione in cui siamo arrivati
+ - CONDIZIONE DI TERMINAZIONE:
+ 			livello uguale a lunghezza della parola
+ 			se viene trovata la soluzione, si interrompe subito la ricerca
+ - GENERAZIONE DELLE SOLUZIONI: 
+ 			trovare tutte le posizioni che siano:
+ 				- adiacenti all'ultima posizione usata
+ 				- contenenti la lettera "corretta"
+ 				- non ancora utilizzate
+ - AVVIO DELLA RICORSIONE:
+ 			partiamo da un livello = 1
+ 			Si parte da una posizione che contiene la prima lettera della parola
+STRUTTURE DATI:
+	- Stringa da riconoscere 'parola'
+	- Livello
+	- List<Pos> 'percorso' corrispondente alla sequenza di caselle
